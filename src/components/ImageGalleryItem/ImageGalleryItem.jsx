@@ -1,5 +1,7 @@
 //import PropTypes from 'prop-types'
 
+import { GalleryItemLi, ImgStyled } from "./ImageGalleryItemStyled";
+
 function ImageGalleryItem({
   id,
   tags,
@@ -8,15 +10,15 @@ function ImageGalleryItem({
   onOpenModal,
 }) {
   return (
-    <li key={id}>
-      <img
+    <GalleryItemLi key={id}>
+      <ImgStyled
         src={webformatURL}
         alt={tags}
         onClick={() => {
           onOpenModal({ id, tags, largeImageURL });
         }}
       />
-    </li>
+    </GalleryItemLi>
   );
 }
 export default ImageGalleryItem;

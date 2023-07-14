@@ -3,8 +3,6 @@ import Container from './Container';
 import { requestImages } from '../Api/api';
 
 export class App extends Component {
-  // static page = 1;
-
   state = {
     pictureName: '',
     responcedImages: [],
@@ -14,13 +12,12 @@ export class App extends Component {
     modal: { isOpen: false, modalData: null },
   };
 
-  async componentDidUpdate(prevProps, prevState) {
+  async componentDidUpdate(_, prevState) {
     const { pictureName, page } = this.state;
     if (
       this.state.pictureName !== prevState.pictureName ||
       this.state.page !== prevState.page
     ) {
-      console.log('didupdate');
       try {
         this.setState({ isLoading: true });
         const responcedImages = await requestImages(pictureName, page);
@@ -39,26 +36,7 @@ export class App extends Component {
   }
 
   fetchLoadMore = async () => {
-    // this.setState((prevState) => ({ page: prevState.page + 1}))
-    console.log(this.state.pictureName);
-    // App.page += 1;
-    // try {
-    //   this.setState({ isLoading: true });
-    //   const nextImages = await requestImages(this.state.pictureName, App.page);
-    //   this.setState({
-    //     responcedImages: [...this.state.responcedImages, ...nextImages.hits],
-    //   });
-    //   console.log(123);
-    //   console.log(App.page);
-    //   console.log(nextImages);
-    // } catch (error) {
-    //   this.setState({ error: error.message });
-    // } finally {
-    //   this.setState({ isLoading: false });
-    // }
-
-    // const additionalImages = await requestImages(pictureName, page)
-    // console.log(additionalImages);
+    this.setState((prevState) => ({ page: prevState.page + 1}))    
   };  
 
   onSubmit = pictureName => {
@@ -74,9 +52,7 @@ export class App extends Component {
   onCloseModal = () =>
     this.setState({ modal: { isOpen: false, modalData: null } });
 
-  render() {
-    // requestImages()
-    //this.fetchLoadMore()
+  render() {    
     const {
       pictureName,
       responcedImages,
@@ -97,8 +73,7 @@ export class App extends Component {
           onOpenModal={this.onOpenModal}
           onCloseModal={this.onCloseModal}
           modalIsOpen={isOpen}
-          modalData={modalData}
-          //page = {App.page}
+          modalData={modalData}          
         />
       </>
     );

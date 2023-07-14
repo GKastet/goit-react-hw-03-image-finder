@@ -1,5 +1,6 @@
-//import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import { Component } from 'react';
+import { ModalStyled } from './ModalStyled';
 
 class Modal extends Component {
   handleKeyDown = event => {
@@ -24,16 +25,21 @@ class Modal extends Component {
 
   render() {
     return (
-      <div className="overlay" onClick={this.handleClickOverlay}>
+      <ModalStyled className="overlay" onClick={this.handleClickOverlay}>
         <div className="modal">
           <img
             src={this.props?.modalData?.largeImageURL}
             alt={this.props?.modalData?.tags}
           />
         </div>
-      </div>
+      </ModalStyled>
     );
   }
+}
+
+Modal.propTypes = {
+  onCloseModal: PropTypes.func.isRequired,
+  modalData: PropTypes.object.isRequired
 }
 
 export default Modal;

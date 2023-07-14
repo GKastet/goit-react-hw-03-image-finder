@@ -1,11 +1,12 @@
-//import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
+import { ImageGalleryUl } from './ImageGalleryStyled';
 
 function ImageGallery({ responcedImages, onOpenModal }) {
     //const checkResponcedImages = Array.isArray(responcedImages) && responcedImages.length > 0
   return (
-    <ul className="gallery">
+    <ImageGalleryUl>
       {responcedImages?.length>0 && responcedImages.map(({ id, tags, webformatURL, largeImageURL }) => {
         //console.log(id, tags, webformatURL, largeImageURL)
         return (
@@ -18,8 +19,15 @@ function ImageGallery({ responcedImages, onOpenModal }) {
           />
         );
       })}
-    </ul>
+    </ImageGalleryUl>
   );
 }
+
+
+ImageGallery.propTypes = {
+  responcedImages: PropTypes.array,
+  onOpenModal: PropTypes.func
+}
+
 
 export default ImageGallery;

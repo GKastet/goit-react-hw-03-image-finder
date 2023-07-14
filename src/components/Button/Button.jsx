@@ -1,12 +1,17 @@
-//import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
+import { ButtonStyled} from './ButtonStyled'
 
 const Button = ({fetchLoadMore }) =>{
     
     return(
     <div>
-        <button type='button' onClick={()=>{fetchLoadMore()}}>Load more</button>
+        <ButtonStyled type='button' onClick={()=>{fetchLoadMore()}}>Load more</ButtonStyled>
     </div>
     )
 }
-//console.log(123)
+
+Button.propTypes = {
+    fetchLoadMore: PropTypes.func.isRequired
+}
+
 export default Button
