@@ -1,4 +1,4 @@
-//import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 import { GalleryItemLi, ImgStyled } from "./ImageGalleryItemStyled";
 
@@ -21,4 +21,13 @@ function ImageGalleryItem({
     </GalleryItemLi>
   );
 }
+
+ImageGalleryItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  tags: PropTypes.string.isRequired,
+  webformatURL: PropTypes.string.isRequired,
+  largeImageURL: PropTypes.string.isRequired,
+  onOpenModal: PropTypes.func.isRequired,
+}
+
 export default ImageGalleryItem;
